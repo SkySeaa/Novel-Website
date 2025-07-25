@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Novelfire - Karanlığın Kalbinde</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #eee;
+    margin: 0; padding: 0;
+  }
+  header {
+    background-color: #222;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    color: #ff4c4c;
+  }
+  #container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  #chapterList {
+    max-height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #444;
+    padding: 10px;
+    background: #222;
+    margin-bottom: 20px;
+  }
+  #chapterList button {
+    display: block;
+    width: 100%;
+    margin: 3px 0;
+    padding: 8px;
+    background: #333;
+    border: none;
+    color: #eee;
+    text-align: left;
+    cursor: pointer;
+  }
+  #chapterList button:hover {
+    background: #ff4c4c;
+  }
+  #chapterContent {
+    background: #222;
+    padding: 20px;
+    border: 1px solid #444;
+    min-height: 200px;
+  }
+  a {
+    color: #ff4c4c;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<header>Novelfire - Karanlığın Kalbinde</header>
+<div id="container">
+  <div id="chapterList"></div>
+  <div id="chapterContent">Bir bölüm seçin...</div>
+</div>
+
+<script>
+  // Bölüm verileri: sadece başlıklar, içerikleri boş (daha sonra doldurabilirsin)
+  const chapters = [];
+  const totalChapters = 700;
+  for(let i=1; i<=totalChapters; i++) {
+    chapters.push({
+      number: i,
+      title: `Bölüm ${i}`,
+      content: `(Bölüm ${i} henüz yazılmadı...)`
+    });
+  }
+
+  const chapterListDiv = document.getElementById('chapterList');
+  const chapterContentDiv = document.getElementById('chapterContent');
+
+  // Listeyi oluştur
+  chapters.forEach(chap => {
+    const btn = document.createElement('button');
+    btn.textContent = chap.title;
+    btn.onclick = () => {
+      chapterContentDiv.innerHTML = `<h2>${chap.title}</h2><p>${chap.content}</p>`;
+      // Scroll sayfa başına
+      window.scrollTo(0, 0);
+    };
+    chapterListDiv.appendChild(btn);
+  });
+</script>
+</body>
+</html>
